@@ -130,6 +130,9 @@ static std::shared_ptr< NuPhy > createKeyboard(
     uint16_t firmware,
     bool verify = true
 ) {
+    if (name == "Air60" || !verify) {
+        return std::make_shared< Air60 >(dataPath, requestPath, firmware);
+    }
     if (name == "Air75" || !verify) {
         return std::make_shared< Air75 >(dataPath, requestPath, firmware);
     }
